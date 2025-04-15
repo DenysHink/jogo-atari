@@ -83,7 +83,6 @@ const projeteis = [];
 const aliens = [];
 let pontuacao = 0;
 let gameOver = false;
-
 let atirando = false;
 
 document.addEventListener('keydown', (e) => {
@@ -138,11 +137,15 @@ function reiniciarJogo() {
 
 function loop() {
     if (gameOver) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = 'white';
         ctx.font = '30px Arial';
-        ctx.fillText('Game Over! Pontuação: ' + pontuacao, 200, 200);
+        ctx.fillText('Game Over! Pontuação: ' + pontuacao, 180, 200);
         ctx.font = '16px Arial';
-        ctx.fillText('Reiniciando em 3 segundos... ou aperte Enter', 230, 240);
+        ctx.fillText('Reiniciando em 3 segundos... ou aperte Enter', 180, 240);
 
         setTimeout(() => {
             if (gameOver) reiniciarJogo();
